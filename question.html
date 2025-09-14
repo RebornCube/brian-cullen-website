@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Quick Questionnaire</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Tiny extras so it looks tidy without touching your main CSS */
+    form { display: grid; gap: 12px; max-width: 580px; margin: 0 auto; text-align: left; }
+    label { font-weight: 600; }
+    input[type="text"], input[type="email"], textarea, input[type="range"] {
+      width: 100%; padding: 8px; box-sizing: border-box;
+      border: 1px solid #ccc; border-radius: 8px;
+    }
+    textarea { min-height: 90px; }
+    .row { display: grid; gap: 6px; }
+    .range-row { display: grid; gap: 4px; }
+    .range-meta { display: flex; justify-content: space-between; font-size: 0.9em; color: #666; }
+    button { padding: 10px 14px; border-radius: 10px; border: 0; background: #ff9800; color: #111; font-weight: 700; cursor: pointer; }
+    small.muted { color: #666; display:block; margin-top:6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quick Questionnaire</h1>
+    <p>Please answer a few short questions. When you press “Send”, your email app will open with the results pre-filled.</p>
+
+    <form id="qForm">
+      <div class="row">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+      </div>
+
+      <div class="row">
+        <label for="email">Your email (optional)</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com">
+      </div>
+
+      <div class="row">
+        <label for="feature">What feature would you like most?</label>
+        <input id="feature" name="feature" type="text" placeholder="e.g., Dark mode, downloads list, search…">
+      </div>
+
+      <div class="range-row">
+        <label for="likelihood">How likely are you to use this site?</label>
+        <input id="likelihood" name="likelihood" type="range" min="1" max="5" step=".25" value="3"
+               oninput="document.getElementById('likeVal').textContent=this.value">
+        <div class="range-meta">
+          <span>Least likely</span>
+          <span>Selected: <strong id="likeVal">3</strong>/5</span>
+          <span>Most likely</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="comments">Any other comments?</label>
+        <textarea id="comments" name="comments" placeholder="Write anything else here…"></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+      <small class="muted">Note: This uses your default email app via <code>mailto:</code>. Nothing is stored on the server.</small>
+      <noscript><small class="muted">JavaScript is required to prepare the email.</small></noscript>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('qForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const feature = document.getElementById('feature').value.trim();
+      const likelihood = document.getElementById('likelihood').value;
+      const comments = document.getElementById('comments').value.trim();
+
+      const now = new Date();
+      const dateISO = now.toISOString();
+      const dateLocal = now.toLocaleString();
+
+      const subject = `Questionnaire response from ${name || 'Visitor'}`;
+      const bodyLines = [
+        `Date/Time (local): ${dateLocal}`,
+        `Date/Time (ISO):   ${dateISO}`,
+        ``,
+        `Name:        ${name || '(not provided)'}`,
+        `Email:       ${email || '(not provided)'}`,
+        `Top feature: ${feature || '(not provided)'}`,
+        `Likelihood to use (1-5): ${likelihood}`,
+        ``,
+        `Comments:`,
+        comments || '(none)'
+      ];
+
+      const mailto = [
+        'mailto:briancullen85@gmail.com',
+        '?subject=', encodeURIComponent(subject),
+        email ? '&cc=' + encodeURIComponent(email) : '',
+        '&body=', encodeURIComponent(bodyLines.join('\n'))
+      ].join('');
+
+      // Open the email client with the composed message
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
