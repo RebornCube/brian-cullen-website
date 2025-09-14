@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Test Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Demo Playground</h1>
+    <p>Try out the different buttons below to see JavaScript in action 🚀</p>
+
+    <!-- Example 1: Hello Message -->
+    <h2>1. Say Hello</h2>
+    <button onclick="sayHello()">Click Me</button>
+    <p id="message"></p>
+
+    <!-- Example 2: Change Background Color -->
+    <h2>2. Change Background Color</h2>
+    <button onclick="changeColor()">Change Background</button>
+
+    <!-- Example 3: Show Current Date/Time -->
+    <h2>3. Show Current Date & Time</h2>
+    <button onclick="showTime()">Show Time</button>
+    <p id="time"></p>
+
+    <!-- Example 4: Simple Counter -->
+    <h2>4. Counter</h2>
+    <p>Counter: <span id="count">0</span></p>
+    <button onclick="decrement()">-</button>
+    <button onclick="increment()">+</button>
+    <button onclick="reset()">Reset</button>
+
+    <!-- Example 5: Show/Hide Text -->
+    <h2>5. Show/Hide Text</h2>
+    <p id="secret" style="display:none;">🤫 This is a hidden message!</p>
+    <button onclick="toggleSecret()">Show/Hide</button>
+  </div>
+
+  <script>
+    // Example 1: Hello
+    function sayHello() {
+      document.getElementById("message").textContent = "Hello! 🎉 You just ran some JavaScript.";
+    }
+
+    // Example 2: Change background color
+    function changeColor() {
+      document.body.style.backgroundColor =
+        "#" + Math.floor(Math.random() * 16777215).toString(16);
+    }
+
+    // Example 3: Show date/time
+    function showTime() {
+      const now = new Date();
+      document.getElementById("time").textContent = now.toString();
+    }
+
+    // Example 4: Counter
+    let counter = 0;
+    function increment() {
+      counter++;
+      document.getElementById("count").textContent = counter;
+    }
+    function reset() {
+      counter = 0;
+      document.getElementById("count").textContent = counter;
+    }
+    function decrement() {
+      counter--;
+      document.getElementById("count").textContent = counter;
+    }
+
+    // Example 5: Show/Hide text
+    function toggleSecret() {
+      const s = document.getElementById("secret");
+      s.style.display = (s.style.display === "none") ? "block" : "none";
+    }
+  </script>
+</body>
+</html>
+
