@@ -1,8 +1,25 @@
+:root {
+  --bg-dark: hsl(293 100% 3%);
+--bg: hsl(297 100% 5%);
+--bg-light: hsl(298 100% 8%);
+--text: hsl(301 100% 98%);
+--text-muted: hsl(301 39% 72%);
+--highlight: hsl(299 61% 38%);
+--border: hsl(298 100% 21%);
+--border-muted: hsl(298 100% 12%);
+--primary: hsl(299 82% 72%);
+--secondary: hsl(133 62% 53%);
+--danger: hsl(7 100% 66%);
+--warning: hsl(53 100% 21%);
+--success: hsl(162 100% 22%);
+--info: hsl(217 100% 70%);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: #f4f4f9;
+  background: var(--bg-dark);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,3 +44,56 @@ h1 {
 p {
   font-size: 1.1em;
 }
+
+.container2 {  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Title Video"
+    "Text Text"
+    "Author Author";
+  gap: 0.5rem;
+  margin: auto;
+  padding: 0%;
+  max-width: 30%;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--bg);
+}
+
+/* reset default margins and padding that create “extra boxes” */
+.Title > *,.Video > *, .Text > *, .Author > * {
+  margin: 0;
+  padding: 0;
+}
+
+.Title { grid-area: Title;
+  color: var(--text);
+  justify-self: start;
+  }
+
+.Video { grid-area: Video;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.Text { grid-area: Text; 
+  color: var(--text-muted);
+  background-color: var(--bg-light);
+  text-align: left;
+}
+
+.Author { grid-area: Author;
+  color: var(--text-muted);
+  background-color: var(--bg-light);
+  text-align: end;
+}
+
+
+/* debugging styles 
+* {
+  outline: 1px dashed red;
+}*/
