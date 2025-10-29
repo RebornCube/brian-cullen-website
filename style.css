@@ -126,6 +126,10 @@ nav a:hover {
 }
 
 @media (max-width: 1000px) {
+  h1 {
+    font-size: 3rem;
+    padding: 0 1rem;
+  }
   .card {
     max-width: 100%;
     padding: 0.5rem;
