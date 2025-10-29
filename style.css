@@ -99,12 +99,12 @@ p {
   padding: 0.5rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 700px) {
   .container2 {
-    width: 100%;
+    max-width: 100%;
     padding: 0.5rem;
   }
-  .body {
+  body {
     flex-direction: column;
     align-items: stretch;
   }
