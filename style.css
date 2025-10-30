@@ -35,13 +35,6 @@ body {
   color: var(--text);
 }
 
-.card-area {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1em;
-}
-
 .container {
   padding: 20px;
   border: 2px dashed #ff9800;
@@ -72,6 +65,14 @@ nav a {
 nav a:hover {
   text-decoration: underline;
   color: var(--secondary);
+}
+
+.card-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  align-content: center;
 }
 
 .card {  display: grid;
@@ -140,6 +141,36 @@ nav a:hover {
   padding: 0.5rem;
   font-size: 0.5em;
 }
+
+.bento {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-rows: 200px 200px;
+  gap: 1em;
+  grid-template-areas: 
+    "box1 box2 box2 box3"
+    "box1 box4 box5 box5";
+  
+}
+
+/* Common styles for all boxes in bento*/
+.box {
+  background-color: var(--bg-light);
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+/* Specific styles for each box in bento*/
+.box1 { grid-area: box1; }
+.box2 { grid-area: box2; }
+.box3 { grid-area: box3; }
+.box4 { grid-area: box4; }
+.box5 { grid-area: box5; } 
 
 @media (max-width: 1000px) {
   .Video iframe {
