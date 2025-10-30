@@ -17,6 +17,12 @@
   --border-radius: 20px 0px 20px 0px;
 }
 
+/* reset default margins and padding that create “extra boxes” */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,7 +32,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #333;
+  color: var(--text);
 }
 
 .card-area {
@@ -53,10 +59,14 @@ span {
   color: var(--secondary);
 }
 
+nav {
+  margin: 20px 0px 0px 0px;
+}
+
 nav a {
   color: var(--text);
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0px 10px;
 }
 
 nav a:hover {
@@ -75,7 +85,7 @@ nav a:hover {
   gap: 0.5rem;
   margin: 1rem;
   padding: 0%;
-  max-width: 25%;
+  max-width: 300px;
   padding: 1rem;
   border: 2px solid var(--border);
   border-radius: var(--border-radius);
@@ -103,6 +113,13 @@ nav a:hover {
 .Video { grid-area: Video;
   color: var(--text);
   background-color: var(--bg);
+}
+
+.Video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--border-radius);
 }
 
 .Text { grid-area: Text; 
