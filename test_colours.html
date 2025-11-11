@@ -38,7 +38,7 @@
                     <p>Number 2</p>
                 </div>
                 <div class="Video">
-                    <p>Video</p>
+                    <iframe src="https://www.youtube-nocookie.com/embed/m7YDWNz65iI?si=rkIy8vpb8YnOYGaK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="Text">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis laudantium deserunt autem assumenda reprehenderit iste aliquam libero, ratione id laborum rem placeat eos incidunt voluptatibus nobis omnis commodi optio. Expedita!</p>
@@ -90,6 +90,7 @@
                 </div>
             </div>
         </div>
+        <button id="theme-toggle">🌓 Toggle Theme</button>
         <h2>Bento Box Layout</h2>
         <div class="bento-area">
             <div class="bento">
@@ -103,4 +104,21 @@
         </div>
     </div>
 </body>
+<script>
+  const toggle = document.getElementById('theme-toggle');
+
+  toggle.addEventListener('click', () => {
+    // Toggle between themes
+    const current = document.documentElement.getAttribute('data-theme');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+
+    // Optional: save preference
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // On load, set saved theme
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+</script>
 </html>

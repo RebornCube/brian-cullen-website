@@ -1,5 +1,9 @@
+:root{
+  --border-radius: 20px 0px 20px 0px;
+}
+
 :root {
-  --bg-dark: hsl(293 100% 3%);
+  /*--bg-dark: hsl(293 100% 3%);
   --bg: hsl(297 100% 5%);
   --bg-light: hsl(298 100% 8%);
   --bg-gradient: linear-gradient(0deg, var(--bg), var(--bg-light));
@@ -13,8 +17,39 @@
   --danger: hsl(7 100% 66%);
   --warning: hsl(53 100% 21%);
   --success: hsl(162 100% 22%);
-  --info: hsl(217 100% 70%);
-  --border-radius: 20px 0px 20px 0px;
+  --info: hsl(217 100% 70%); */
+  --bg-dark: hsl(2 100% 3%);
+  --bg: hsl(14 100% 5%);
+  --bg-light: hsl(26 100% 6%);
+  --text: hsl(32 100% 89%);
+  --text-muted: hsl(32 61% 63%);
+  --highlight: hsl(38 100% 20%);
+  --border: hsl(34 100% 15%);
+  --border-muted: hsl(24 100% 11%);
+  --primary: hsl(35 84% 56%);
+  --secondary: hsl(210 100% 71%);
+  --danger: hsl(8 79% 66%);
+  --warning: hsl(54 100% 31%);
+  --success: hsl(156 68% 43%);
+  --info: hsl(217 94% 69%);
+}
+
+/* theme-dark.css */
+[data-theme="dark"] {
+--bg-dark: hsl(38 35% 88%);
+--bg: hsl(38 64% 93%);
+--bg-light: hsl(38 100% 99%);
+--text: hsl(30 100% 3%);
+--text-muted: hsl(38 28% 25%);
+--highlight: hsl(38 100% 97%);
+--border: hsl(38 16% 47%);
+--border-muted: hsl(38 20% 59%);
+--primary: hsl(43 100% 15%);
+--secondary: hsl(218 52% 32%);
+--danger: hsl(9 21% 41%);
+--warning: hsl(52 23% 34%);
+--success: hsl(147 19% 36%);
+--info: hsl(217 22% 41%);
 }
 
 /* reset default margins and padding that create “extra boxes” */
@@ -32,14 +67,6 @@
   justify-content: center;
   align-items: center;
   color: var(--text);
-}
-
-.container {
-  padding: 20px;
-  border: 2px dashed #ff9800;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -62,7 +89,6 @@ h1 span {
 nav {
   background-color: var(--bg-light);
   border-bottom: 1px solid var(--highlight);
-
 }
 
 nav ul {
@@ -90,7 +116,7 @@ nav a.accent-link {
   background-color: var(--secondary);
 }
 
-.card-area, .bento-area {
+.card-area {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -167,6 +193,7 @@ nav a.accent-link {
   display: grid;
   grid-template-columns: 200px 200px 200px 200px;
   grid-template-rows: 200px 200px;
+  grid-auto-flow: row;
   grid-template-areas: 
     "box1 box2 box2 box3"
     "box1 box4 box5 box5";
@@ -194,8 +221,14 @@ nav a.accent-link {
 .box5 { grid-area: box5; } 
 
 @media (max-width: 1200px) {
+  .bento-area {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
   .bento {
-    grid-template-columns: 200px 200px;
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 200px 200px 200px 200px;
     grid-template-areas: 
       "box1 box3"
@@ -213,9 +246,13 @@ nav a.accent-link {
     font-size: 3rem;
     padding: 1em;
   }
+  .card-area, .bento-area {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
   .card {
     max-width: 100%;
-    
     grid-template-columns: 1fr;
     grid-template-areas:
     "Title"
@@ -225,7 +262,7 @@ nav a.accent-link {
   }
   
   .bento {
-    width: 100%;
+    max-width: 100%;
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
     grid-template-areas: 
@@ -235,11 +272,7 @@ nav a.accent-link {
       "box4"
       "box5";
   }
-  .card-area, .bento-area {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-  }
+  
 }
 
 /* debugging styles */
