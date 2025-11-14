@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expand</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li class="home-li"><a href="index.html">Home</a></li>
+            <li><a href="expand.html">Expand</a></li>
+            <li><a href="test_colours.html" class="active-link">Colours Test</a></li>
+            <li><a href="test_colours.html" class="accent-link">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="expand-container">
+  <div>
+    <h2>Expand</h2>
+  </div>
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad voluptate sit dolorem alias eos ipsam consectetur dignissimos iste incidunt aut nihil ex voluptatibus, laudantium quia neque vero. Corrupti, tempora quasi.</p>
+  </div>
+</div>
+    <div class="expand-container">
+        <div>
+            <h2>Expand</h2>
+        </div>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur iure nihil cum molestiae consequatur velit, nulla dolorum error, laboriosam distinctio aliquam praesentium pariatur ipsum quia dolor laborum nemo harum natus.</p>
+        </div>
+    </div>
+</body>
+<script>
+    const containers = document.querySelectorAll('.expand-container');
+
+    containers.forEach(container => {
+        container.addEventListener('click', () => {
+            container.classList.toggle('open');
+        });
+    });
+</script>
+</html>

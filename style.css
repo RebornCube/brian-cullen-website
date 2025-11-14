@@ -18,38 +18,38 @@
   --warning: hsl(53 100% 21%);
   --success: hsl(162 100% 22%);
   --info: hsl(217 100% 70%); */
-  --bg-dark: hsl(2 100% 3%);
-  --bg: hsl(14 100% 5%);
-  --bg-light: hsl(26 100% 6%);
-  --text: hsl(32 100% 89%);
-  --text-muted: hsl(32 61% 63%);
-  --highlight: hsl(38 100% 20%);
-  --border: hsl(34 100% 15%);
-  --border-muted: hsl(24 100% 11%);
-  --primary: hsl(35 84% 56%);
-  --secondary: hsl(210 100% 71%);
-  --danger: hsl(8 79% 66%);
-  --warning: hsl(54 100% 31%);
-  --success: hsl(156 68% 43%);
-  --info: hsl(217 94% 69%);
+  --bg-dark: hsl(7 100% 2%);
+--bg: hsl(17 100% 4%);
+--bg-light: hsl(27 100% 7%);
+--text: hsl(29 100% 90%);
+--text-muted: hsl(30 63% 64%);
+--highlight: hsl(35 92% 29%);
+--border: hsl(35 100% 17%);
+--border-muted: hsl(30 100% 11%); 
+--primary: hsl(30 68% 64%);
+--secondary: hsl(207 84% 70%);
+--danger: hsl(8 58% 66%);
+--warning: hsl(51 41% 48%);
+--success: hsl(150 37% 53%);
+--info: hsl(217 66% 68%);
 }
 
 /* theme-dark.css */
 [data-theme="dark"] {
---bg-dark: hsl(38 35% 88%);
---bg: hsl(38 64% 93%);
---bg-light: hsl(38 100% 99%);
---text: hsl(30 100% 3%);
---text-muted: hsl(38 28% 25%);
---highlight: hsl(38 100% 97%);
---border: hsl(38 16% 47%);
---border-muted: hsl(38 20% 59%);
---primary: hsl(43 100% 15%);
---secondary: hsl(218 52% 32%);
---danger: hsl(9 21% 41%);
---warning: hsl(52 23% 34%);
---success: hsl(147 19% 36%);
---info: hsl(217 22% 41%);
+--bg-dark: hsl(29 100% 87%);
+--bg: hsl(29 100% 93%);
+--bg-light: hsl(29 100% 98%);
+--text: hsl(1 100% 6%);
+--text-muted: hsl(35 100% 17%);
+--highlight: hsl(29 100% 95%);
+--border: hsl(31 57% 43%);
+--border-muted: hsl(30 56% 56%);
+--primary: hsl(35 100% 17%);
+--secondary: hsl(202 100% 22%);
+--danger: hsl(8 43% 42%);
+--warning: hsl(53 100% 19%);
+--success: hsl(157 83% 25%);
+--info: hsl(217 46% 43%);
 }
 
 /* reset default margins and padding that create “extra boxes” */
@@ -237,6 +237,33 @@ nav a.accent-link {
       "box5 box5";
   }
 }
+
+.expand-container {
+  margin: 1em;
+  width: 20%;
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+
+  display: grid;
+  grid-template-rows: 2em 0fr;
+  transition: grid-template-rows 300ms ease;
+}
+
+/* When open, second row gets space */
+.expand-container.open {
+  grid-template-rows: 2em 1fr;
+}
+
+/* Hide anything that doesn't fit in the row when closed */
+.expand-container .content {
+  overflow: hidden;
+  min-height: 0; /* important for some browsers */
+}
+
+
 
 @media (max-width: 800px) {
   .Video iframe {
